@@ -5,12 +5,11 @@
  */
 package minipos.View.GL;
 
-import datechooser.events.SelectionChangedEvent;
-import datechooser.events.SelectionChangedListener;
+
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,13 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import minipos.Model.DBConnection;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 /**
@@ -265,8 +261,9 @@ public class GlTrnsOut extends javax.swing.JFrame {
 
             String trnsDesc = trnsDesc_tf.getText();
             //String accName = accName_tf.getText();
-            String trnsDate = "";//trnsDate_tf.getText();
-            String docNo = docNo_tf.getText();
+            Date trnsDate = (Date) dateChooserCombo1.getSelectedDate().getTime();
+
+                    String docNo = docNo_tf.getText();
             int value = Integer.parseInt(value_tf.getText());
 
             try {

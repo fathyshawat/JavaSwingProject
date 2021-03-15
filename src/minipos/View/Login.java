@@ -21,26 +21,18 @@ import minipos.Model.DBConnection;
  */
 public class Login extends javax.swing.JDialog {
     
-        String userName;
-        String password;
-        Connection conn;
-        Statement stm;
-        DBConnection dbConnection;
+       private String userName;
+      private  String password;
+      private  Connection conn;
+      private  Statement stm;
+      private  DBConnection dbConnection;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
         
-        
-             try {
-             dbConnection = new DBConnection();
-             conn = dbConnection.createConnection();
-             stm = conn.createStatement();
-             } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+       
     }
 
     /**
@@ -128,7 +120,7 @@ public class Login extends javax.swing.JDialog {
 
     private void doLogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doLogin
             userName = user_tf.getText().trim();
-            password = jPasswordField1.getText().toString();
+            password = Arrays.toString(jPasswordField1.getPassword());
    
             System.err.println( userName +"  "+password);
                 
@@ -136,24 +128,26 @@ public class Login extends javax.swing.JDialog {
 
                 JOptionPane.showMessageDialog(rootPane,"Enter User & Password !" , "Error",JOptionPane.ERROR_MESSAGE);
             } else {
-                String sql = "SELECT * FROM users WHERE email='"+userName+"' and password='"+password+"'";
-                ResultSet rs;
-                try {
-                    rs = stm.executeQuery(sql);
-                     boolean success = rs.next();
-                       if (!success) {
+            String sql = "SELECT * FROM users WHERE email='" + userName + "' and password='" + password + "'";
+            ResultSet rs;
+            try {
+                dbConnection = new DBConnection();
+                conn = dbConnection.createConnection();
+                stm = conn.createStatement();
+                rs = stm.executeQuery(sql);
+                boolean success = rs.next();
+                if (!success) {
                     JOptionPane.showMessageDialog(rootPane, "Login failed. Check credentials !", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     this.dispose();
                     new Home().setVisible(true);
-                   
+
                 }
-                } catch (SQLException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
-               
-              
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        }
             
             
             

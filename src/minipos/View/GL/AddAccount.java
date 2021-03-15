@@ -25,6 +25,8 @@ public class AddAccount extends javax.swing.JDialog {
      */
     public AddAccount() {
         initComponents();
+    
+    
     }
 
     /**

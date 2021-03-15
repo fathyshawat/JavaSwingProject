@@ -6,6 +6,8 @@
 package minipos.View;
 
 
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 import minipos.View.GL.GlAccounts;
 import minipos.View.GL.GlSttmRep;
 import minipos.View.GL.GlTrnsIn;
@@ -22,6 +24,8 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        this.setLocationRelativeTo(null);
+      
     }
 
     /**
