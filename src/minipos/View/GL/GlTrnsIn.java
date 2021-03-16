@@ -8,10 +8,12 @@ package minipos.View.GL;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +37,6 @@ public class GlTrnsIn extends javax.swing.JFrame {
     public GlTrnsIn() {
         initComponents();
         getAccountsLOV();
-        
         
     }
 
@@ -248,19 +249,19 @@ public class GlTrnsIn extends javax.swing.JFrame {
            
             String trnsDesc = trnsDesc_tf.getText();
          
-            String trnsDate = dateChooserCombo1.getText();
-            String docNo = docNo_tf.getText();
+            Calendar calndar =  dateChooserCombo1.getSelectedDate();
+            Date trnsDate = new Date (calndar.getTimeInMillis());//done            String docNo = docNo_tf.getText();
             int value = Integer.parseInt(value_tf.getText());
-
+          String docNo = docNo_tf.getText();
             try {
-                DBConnection dBConnection = new DBConnection();
+                  DBConnection dBConnection = new DBConnection();
                 Connection con = dBConnection.createConnection();
                 Statement stm = con.createStatement();
+                
                 String sql = "INSERT INTO `gl_trns_mast`(`desc_a`, "
                         + " `value_type`, `trns_date`, `account_no`, `doc_no`,"
-                        + " `value`) "
-                        + "VALUES ("+trnsDesc+","+'1'+","
-                        +trnsDate+","+selectedAccNo+","+docNo+","+ value+")";
+                        + " `value`) " + "VALUES ('" + trnsDesc + "','1','"
+                        + trnsDate + "','" + selectedAccNo + "','" + docNo + "','" + value + "')";
                 
                 stm.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null,

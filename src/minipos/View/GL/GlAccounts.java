@@ -44,6 +44,7 @@ public class GlAccounts extends javax.swing.JFrame {
         accTable_t = new javax.swing.JTable();
         add_btn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        delete_btn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +77,14 @@ public class GlAccounts extends javax.swing.JFrame {
             }
         });
 
+        delete_btn1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        delete_btn1.setText("مسح حساب");
+        delete_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,9 +92,11 @@ public class GlAccounts extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(33, 33, 33)
                 .addComponent(add_btn)
-                .addGap(212, 212, 212))
+                .addGap(47, 47, 47)
+                .addComponent(delete_btn1)
+                .addGap(101, 101, 101))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,7 +108,8 @@ public class GlAccounts extends javax.swing.JFrame {
                 .addGap(0, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -116,6 +128,13 @@ public class GlAccounts extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void delete_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btn1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+         new DeleteAccount().setVisible(true);
+        
+    }//GEN-LAST:event_delete_btn1ActionPerformed
 
     
      public void showAccountsData(){
@@ -149,9 +168,13 @@ public class GlAccounts extends javax.swing.JFrame {
         }
     }
 
+     
+     
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable accTable_t;
     private javax.swing.JButton add_btn;
+    private javax.swing.JButton delete_btn1;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
